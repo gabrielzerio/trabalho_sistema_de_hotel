@@ -12,11 +12,10 @@
         <exec.mainClass>com.mycompany.hotel.Hotel</exec.mainClass>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.xerial/sqlite-jdbc -->
         <dependency>
             <groupId>org.xerial</groupId>
             <artifactId>sqlite-jdbc</artifactId>
-            <version>3.43.0.0</version>
+            <version>3.44.1.0</version>
         </dependency>
     </dependencies>
 </project>
