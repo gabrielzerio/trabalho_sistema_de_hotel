@@ -234,7 +234,10 @@ public class MenuCliente extends javax.swing.JInternalFrame {
         Cliente cliente = new Cliente(CPF, nome, telefone);
 
         if (controlaCliente.existeCliente(CPF)) {
-            System.out.println("Já existe cliente com esse CPF");
+            JOptionPane.showMessageDialog(null, "Já existe cliente com esse CPF", "Alerta!" ,JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        if(verificaCamposDeCadastro()){
             return;
         }
         controlaCliente.salvarCliente(cliente);
@@ -289,6 +292,13 @@ public class MenuCliente extends javax.swing.JInternalFrame {
         jTextFieldTelefone.setText("");
     }
 
+    private boolean verificaCamposDeCadastro() {
+        if (jTextFieldCPF.getText().equals("") || jTextFieldNome.getText().equals("") || jTextFieldTelefone.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Você deve preencher todos os campos", "Alerta!" ,JOptionPane.WARNING_MESSAGE);
+            return true;
+        }
+        return false;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
