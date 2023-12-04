@@ -87,6 +87,8 @@ public class MenuQuartos extends javax.swing.JInternalFrame {
         jTextFieldCapacidade = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
+        setClosable(true);
+
         jLabel5.setText("Consulta de Quartos");
 
         jTextFieldNumero.addActionListener(new java.awt.event.ActionListener() {
