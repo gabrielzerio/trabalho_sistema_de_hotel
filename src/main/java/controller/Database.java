@@ -18,7 +18,7 @@ public class Database {
     
     private Database(){
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
+            connection = DriverManager.getConnection("jdbc:sqlite::resource:" + Banco.class.getResource("/res/sample.db"));
         } catch (SQLException e) {
             System.err.println("Houve um problema ao criar o arquivo do banco!");
             e.printStackTrace();
