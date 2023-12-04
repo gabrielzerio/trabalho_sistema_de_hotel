@@ -1,7 +1,3 @@
-
-import java.awt.GraphicsDevice;
-import java.awt.GraphicsEnvironment;
-
 public class TelaPrincipal extends javax.swing.JFrame {
 
     ControladorCliente cc = new ControladorCliente();

@@ -1,8 +1,4 @@
-
-import java.util.ArrayList;
-import java.util.Random;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -24,6 +20,14 @@ public class MenuCliente extends javax.swing.JInternalFrame {
     }
     // VARIAVEL GLOBAL!!!!!!!!!!!!!!!!!
     ControladorCliente controlaCliente = new ControladorCliente();
+
+    public DefaultTableModel retornaModeloTabela() {
+        DefaultTableModel tbClientes = new DefaultTableModel();
+        tbClientes.addColumn("Nome");
+        tbClientes.addColumn("CPF");
+        tbClientes.addColumn("Telefone");
+        return tbClientes;
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -214,32 +218,30 @@ public class MenuCliente extends javax.swing.JInternalFrame {
 
         if (controlaCliente.existeCliente(CPF)) {
             System.out.println("Já existe cliente com esse CPF");
-        } else {
-            controlaCliente.salvarCliente(cliente);
+            return;
         }
+        controlaCliente.salvarCliente(cliente);
+
     }
 
     public void excluiCliente() {
-        //String CPFdaLinha = String.valueOf(jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 1));
-        String CPFdaLinha = jTextFieldBuscaCliente.getText();
-        Cliente cliente = controlaCliente.pesquisarCliente(CPFdaLinha);
+        //String cpf = String.valueOf(jTableClientes.getValueAt(jTableClientes.getSelectedRow(), 1));
+        String cpf = jTextFieldBuscaCliente.getText();
+        Cliente cliente = controlaCliente.pesquisarCliente(cpf);
 
         if (cliente == null) {
-            JOptionPane.showMessageDialog(null, "Não existe cliente com esse CPF", "erro", JOptionPane.ERROR_MESSAGE);
-        } else {
-            controlaCliente.excluirCliente(cliente);
+            JOptionPane.showMessageDialog(null, "Não existe cliente com esse CPF", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+        controlaCliente.excluirCliente(cliente);
+
     }
 
     public void atualizaTabela() {
-        DefaultTableModel tbClientes = new DefaultTableModel();
-        tbClientes.addColumn("Nome");
-        tbClientes.addColumn("CPF");
-        tbClientes.addColumn("Telefone");
+        DefaultTableModel tbClientes = retornaModeloTabela();
 
-        //DefaultTableModel tbClientes = (DefaultTableModel) jTableClientes.getModel();;
-        for (Cliente cliente2 : controlaCliente.retornarTodos()) {
-            Object[] dados = {cliente2.getNome(), cliente2.getCpf(), cliente2.getTelefone()};
+        for (Cliente cliente : controlaCliente.retornarTodos()) {
+            Object[] dados = {cliente.getNome(), cliente.getCpf(), cliente.getTelefone()};
             tbClientes.addRow(dados);
         }
         jTableClientes.setModel(tbClientes);
@@ -247,10 +249,7 @@ public class MenuCliente extends javax.swing.JInternalFrame {
 
     public void pesquisaCliente() {
         String cpf = jTextFieldBuscaCliente.getText();
-        DefaultTableModel tbClientes = new DefaultTableModel();
-        tbClientes.addColumn("Nome");
-        tbClientes.addColumn("CPF");
-        tbClientes.addColumn("Telefone");
+        DefaultTableModel tbClientes = retornaModeloTabela();
         if (cpf.equals("")) {
             atualizaTabela();
             return;
@@ -258,12 +257,13 @@ public class MenuCliente extends javax.swing.JInternalFrame {
 
         Cliente cliente = controlaCliente.pesquisarCliente(cpf);
         if (cliente == null) {
-            JOptionPane.showMessageDialog(null, "Não existe cliente com esse CPF", "erro", JOptionPane.ERROR_MESSAGE);
-        } else {
-            Object[] dados = {cliente.getNome(), cliente.getCpf(), cliente.getTelefone()};
-            tbClientes.addRow(dados);
-            jTableClientes.setModel(tbClientes);
+            JOptionPane.showMessageDialog(null, "Não existe cliente com esse CPF", "Erro", JOptionPane.ERROR_MESSAGE);
+            return;
         }
+        Object[] dados = {cliente.getNome(), cliente.getCpf(), cliente.getTelefone()};
+        tbClientes.addRow(dados);
+        jTableClientes.setModel(tbClientes);
+
     }
 
     private void limpaCampos() {
