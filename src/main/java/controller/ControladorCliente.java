@@ -1,8 +1,11 @@
 package controller;
 
+import java.sql.SQLException;
 import model.Cliente;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControladorCliente {
 
@@ -37,7 +40,7 @@ public class ControladorCliente {
     }
 
     public boolean salvarCliente(Cliente c) {
-        
+
         if (c == null) {
             return false;
         }
@@ -46,6 +49,7 @@ public class ControladorCliente {
             return true;
         } else {
             this.listaClientes.add(c);
+            salvaNoBanco(c);
             return true;
         }
     }
@@ -62,10 +66,17 @@ public class ControladorCliente {
         }
     }
 
-    public List<Cliente> retornarTodos(){
+    public List<Cliente> retornarTodos() {
         return this.listaClientes;
     }
-    
+
+    private void salvaNoBanco(Cliente c) {
+        System.out.println(c.getCpf() + " " + c.getNome() + " " + c.getTelefone());
+        ClienteDAO clientedao = new ClienteDAO();
+        try {
+            clientedao.insert(c);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
-
-

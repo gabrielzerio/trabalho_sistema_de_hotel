@@ -7,6 +7,7 @@ package controller;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
@@ -18,8 +19,16 @@ public class Database {
     
     private Database(){
         try {
-            connection = DriverManager.getConnection("jdbc:sqlite::resource:" + Banco.class.getResource("/res/sample.db"));
-        } catch (SQLException e) {
+            connection = DriverManager.getConnection("jdbc:sqlite:sample.db");
+            
+            Statement statement = connection.createStatement();
+        statement.setQueryTimeout(30);  // set timeout to 30 sec.
+
+        String sql = FileUtils.loadTextFile("src/main/java/res/descricao.sql");
+        System.out.println(sql);
+        statement.executeUpdate(sql);
+            
+        } catch (Exception e) {
             System.err.println("Houve um problema ao criar o arquivo do banco!");
             e.printStackTrace();
         }
