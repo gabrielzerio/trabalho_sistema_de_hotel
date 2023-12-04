@@ -19,11 +19,14 @@ public class MenuCliente extends javax.swing.JInternalFrame {
     /**
      * Creates new form MenuCliente
      */
-    public MenuCliente() {
-        initComponents();
-    }
+    
     // VARIAVEL GLOBAL!!!!!!!!!!!!!!!!!
     ControladorCliente controlaCliente = new ControladorCliente();
+    public MenuCliente() {
+        initComponents();
+        atualizaTabela();
+    }
+    
 
     public DefaultTableModel retornaModeloTabela() {
         DefaultTableModel tbClientes = new DefaultTableModel();

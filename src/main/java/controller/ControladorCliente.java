@@ -9,6 +9,10 @@ import java.util.logging.Logger;
 
 public class ControladorCliente {
 
+    public ControladorCliente() {
+        
+    }
+    private ClienteDAO clientedao = new ClienteDAO();
     private List<Cliente> listaClientes = new ArrayList<>();
 
     public boolean existeCliente(String CPF) {
@@ -67,12 +71,16 @@ public class ControladorCliente {
     }
 
     public List<Cliente> retornarTodos() {
+        try {
+            listaClientes = clientedao.selectAll();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return this.listaClientes;
     }
 
     private void salvaNoBanco(Cliente c) {
         System.out.println(c.getCpf() + " " + c.getNome() + " " + c.getTelefone());
-        ClienteDAO clientedao = new ClienteDAO();
         try {
             clientedao.insert(c);
         } catch (SQLException ex) {

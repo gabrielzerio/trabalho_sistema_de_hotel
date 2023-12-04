@@ -11,7 +11,7 @@ public class Cliente {
         this.cpf = cpf;
         this.nome = nome;
         this.telefone = telefone;
-    }
+    }    
 
     public String getCpf() {
         return cpf;
