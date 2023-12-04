@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class ControladorCliente {
 
     public ControladorCliente() {
-        
+
     }
     private ClienteDAO clientedao = new ClienteDAO();
     private List<Cliente> listaClientes = new ArrayList<>();
@@ -49,10 +50,13 @@ public class ControladorCliente {
             return false;
         }
         if (existeCliente(c.getCpf())) {
-            this.listaClientes.set(retornarIndice(c.getCpf()), c);
+            int opt = JOptionPane.showConfirmDialog(null, "Esse usuario já está cadastrado, você deseja alterar os dados de telefone e nome?", "Atenção", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+            if (opt == 0) {
+                //this.listaClientes.set(retornarIndice(c.getCpf()), c);
+                modificaNoBanco(c);
+            }
             return true;
         } else {
-            this.listaClientes.add(c);
             salvaNoBanco(c);
             return true;
         }
@@ -63,7 +67,8 @@ public class ControladorCliente {
             return false;
         }
         if (existeCliente(c.getCpf())) {
-            this.listaClientes.remove(retornarIndice(c.getCpf()));
+            //this.listaClientes.remove(retornarIndice(c.getCpf()));
+            excluirNoBanco(c);
             return true;
         } else {
             return false;
@@ -85,6 +90,28 @@ public class ControladorCliente {
             clientedao.insert(c);
         } catch (SQLException ex) {
             Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            retornarTodos();
+        }
+    }
+
+    private void modificaNoBanco(Cliente c) {
+        try {
+            clientedao.alteraCliente(c);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            retornarTodos();
+        }
+    }
+    
+    private void excluirNoBanco(Cliente c){
+        try {
+            clientedao.excluiCliente(c);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            retornarTodos();
         }
     }
 }
