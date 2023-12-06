@@ -5,40 +5,52 @@ import java.util.List;
 
 public class Reserva {
 
-    private List<Cliente> cliente[];
-    private List<Quarto> quarto[];
-    private Date dataInicio;
-    private Date dataFim;
+        private String CPF;
+        private int numeroQuarto;
+        private Date dataInicio;
+        private Date dataFim;
 
-    public Reserva(List<Cliente>[] cliente, List<Quarto>[] quarto, Date dataInicio, Date dataFim) {
-        this.cliente = cliente;
-        this.quarto = quarto;
+    public Reserva(String CPF, int numeroQuarto, Date dataInicio, Date dataFim) {
+        this.CPF = CPF;
+        this.numeroQuarto = numeroQuarto;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
     }
+
         
-    public List<Cliente>[] getCliente() {
-        return cliente;
+        
+    public String getCPF() {
+        return CPF;
     }
 
-    public List<Quarto>[] getQuarto() {
-        return quarto;
+    public void setCPF(String CPF) {
+        this.CPF = CPF;
+    }
+
+    public int getNumeroQuarto() {
+        return numeroQuarto;
+    }
+
+    public void setNumeroQuarto(int numeroQuarto) {
+        this.numeroQuarto = numeroQuarto;
     }
 
     public Date getDataInicio() {
         return dataInicio;
     }
 
-    public void setCliente(List<Cliente>[] cliente) {
-        this.cliente = cliente;
-    }
-
-    public void setQuarto(List<Quarto>[] quarto) {
-        this.quarto = quarto;
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
     }
 
     public Date getDataFim() {
         return dataFim;
     }
 
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
+    }
+        
+        
+        
 }

@@ -39,16 +39,8 @@ public class ControladorQuarto {
 
     public boolean salvarQuarto(Quarto q) {
         
-        if (q == null) {
-            return false;
-        }
-        if (existeQuarto(q.getNumero())) {
-            this.listaQuartos.set(retornarIndice(q.getNumero()), q);
-            return true;
-        } else {
-            this.listaQuartos.add(q);
-            return true;
-        }
+        return false;
+        
     }
 
     public boolean excluirQuarto(Quarto q) {

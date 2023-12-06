@@ -91,7 +91,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemClientesActionPerformed
 
     private void jMenuItemQuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemQuartosActionPerformed
-        MenuQuartos menuQua = new MenuQuartos();
+        MenuReserva menuQua = new MenuReserva();
         menuQua.setVisible(true);
         jDesktopPane1.removeAll();
         jDesktopPane1.add(menuQua).setVisible(true);    }//GEN-LAST:event_jMenuItemQuartosActionPerformed
