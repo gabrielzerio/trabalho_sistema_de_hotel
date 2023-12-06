@@ -9,7 +9,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <exec.mainClass>com.mycompany.hotel.Hotel</exec.mainClass>
+        <exec.mainClass>com.mycompany.Hotel.view.DatePickerExample</exec.mainClass>
     </properties>
     <dependencies>
         <dependency>
@@ -17,16 +17,11 @@
             <artifactId>sqlite-jdbc</artifactId>
             <version>3.44.1.0</version>
         </dependency>
-        <!-- JAVAFX -->
         <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-controls</artifactId>
-            <version>14</version>
-            /</dependency>
-        <dependency>
-            <groupId>org.openjfx</groupId>
-            <artifactId>javafx-fxml</artifactId>
-            <version>14</version>
-            /</dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>

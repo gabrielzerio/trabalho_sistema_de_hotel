@@ -277,17 +277,17 @@ public class MenuReserva extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonPesquisar1ActionPerformed
 
     public void reservaQuarto() throws ParseException {
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd"); 
-        LocalDate data_inicio = LocalDate.parse(dataInicio.getText(), formato);
-        LocalDate data_fim = LocalDate.parse(dataFim.getText(), formato);
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd"); 
+        //LocalDate data_inicio = LocalDate.parse(dataInicio.getText(), formato);
+        //LocalDate data_fim = LocalDate.parse(dataFim.getText(), formato);
         
-        Reserva reserva = new Reserva(jTextFieldCPFCliente.getText(), Integer.parseInt(jTextFieldNumeroQuarto.getText()), data_inicio, data_fim);
+        //Reserva reserva = new Reserva(jTextFieldCPFCliente.getText(), Integer.parseInt(jTextFieldNumeroQuarto.getText()), data_inicio, data_fim);
         if(verificaCamposReserva()){
             
             return;
         }
         System.out.println(dataInicio.getText() + " " + dataFim.getText());
-        controlaReserva.novaReserva(reserva);
+        //controlaReserva.novaReserva(reserva);
     }
     public boolean verificaCamposReserva(){
         if(jTextFieldCPFCliente.getText().equals("") || jTextFieldNumeroQuarto.getText().equals("") || dataInicio.getText().equals("")||dataFim.getText().equals("")){
