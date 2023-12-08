@@ -23,7 +23,8 @@ public class ReservaDAO {
         con = Database.getInstance().getConnection();
     }
     public boolean verificaDataReserva(int numero, Date dataInicio, Date dataFim) throws SQLException{
-        String sql = "select * from reserva where numero_quarto ="+ numero+ " and ((data_inicio >= '"+dataInicio+"' and data_inicio <= '"+dataInicio+"') OR (data_fim >= '"+dataFim+"' and data_fim <= '"+dataInicio+"') OR (data_inicio <= '"+dataInicio+"' and data_fim>= '"+dataFim+"'));";
+        //String sql = "select data_inicio, data_fim from reserva where numero_quarto ="+ numero+ " and ((data_inicio >= '"+dataInicio+"' and data_inicio <= '"+dataInicio+"') OR (data_fim >= '"+dataFim+"' and data_fim <= '"+dataInicio+"') OR (data_inicio <= '"+dataInicio+"' and data_fim>= '"+dataFim+"'));";
+        String sql = "select data_inicio, data_fim from reserva where numero_quarto ='"+ numero +";'";
         Statement stat = con.createStatement();
         ResultSet rs = stat.executeQuery(sql);
        while(rs.next()){
