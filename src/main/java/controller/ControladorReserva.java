@@ -6,6 +6,7 @@ package controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,5 +28,19 @@ public class ControladorReserva {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex.toString());
         }
+    }
+    public boolean existeReservaNoPeriodo(int numeroQuarto, String dataInicio, String dataFim){
+        return reservaDAO.existeReservaNoPeriodo(numeroQuarto, dataInicio, dataFim);
+    }
+    public List<Reserva> buscaReservas(int numeroQuarto , String CPF, int opcao){
+        return reservaDAO.buscaReservas(numeroQuarto, CPF, opcao);
+    }
+    
+    /*public List<Date[]> buscaDatas(int numeroQuarto){
+        return reservaDAO.buscaDatas(numeroQuarto);
+    }*/
+
+    public boolean cancelaReserva(int IDReserva) {
+        return reservaDAO.cancelaReserva(IDReserva);
     }
 }

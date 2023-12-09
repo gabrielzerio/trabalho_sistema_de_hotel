@@ -6,6 +6,7 @@ public class Quarto {
     private boolean reservado;
     private int capacidade;
 
+    public Quarto(){};
     public Quarto(int numero, int capacidade) {
         this.numero = numero;
         this.capacidade = capacidade;
@@ -30,5 +31,10 @@ public class Quarto {
     public void setCapacidade(int capacidade) {
         this.capacidade = capacidade;
     }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
+    }
+    
 
 }

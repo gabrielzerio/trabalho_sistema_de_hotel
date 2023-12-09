@@ -1,13 +1,22 @@
 package controller;
 
+import java.sql.SQLException;
 import model.Quarto;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControladorQuarto {
-
+    public ControladorQuarto(){
+        try {
+            listaQuartos = quartosdao.selectQuartos();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControladorQuarto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private List<Quarto> listaQuartos = new ArrayList<>();
+    QuartosDAO quartosdao = new QuartosDAO();
 
     public boolean existeQuarto(int numero) {
         for (Quarto q : this.listaQuartos) {
@@ -38,9 +47,9 @@ public class ControladorQuarto {
     }
 
     public boolean salvarQuarto(Quarto q) {
-        
+
         return false;
-        
+
     }
 
     public boolean excluirQuarto(Quarto q) {
@@ -55,10 +64,8 @@ public class ControladorQuarto {
         }
     }
 
-    public List<Quarto> retornarTodos(){
+    public List<Quarto> retornarTodos() {
         return this.listaQuartos;
     }
     
 }
-
-
