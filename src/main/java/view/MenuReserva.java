@@ -408,7 +408,7 @@ public class MenuReserva extends javax.swing.JInternalFrame {
 
     private void jTextFieldBuscaPorCPFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscaPorCPFKeyPressed
         if (evt.getKeyCode() == 10) {
-            buscaReservas(2);
+            buscaReservas(1);
         }
     }//GEN-LAST:event_jTextFieldBuscaPorCPFKeyPressed
 
@@ -418,6 +418,7 @@ public class MenuReserva extends javax.swing.JInternalFrame {
 
     private void jButtonCancelaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelaReservaActionPerformed
         cancelaReserva();
+        buscaReservas(2);
     }//GEN-LAST:event_jButtonCancelaReservaActionPerformed
 
 
